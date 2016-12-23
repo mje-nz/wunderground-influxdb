@@ -1,4 +1,4 @@
-"""Unit tests for wunderground module.
+"""Unit tests for Wunderground client.
 
 Author: Matthew Edwards
 Date: December 2016.
@@ -8,7 +8,7 @@ Date: December 2016.
 import json
 from nose.tools import assert_equal
 
-import wunderground
+from main import WundergroundConditions
 
 
 # This is the response to
@@ -110,26 +110,26 @@ wunderground_conditions_response = json.loads('''
 
 
 def test_wunderground_conditions_time():
-    cond = wunderground.WundergroundConditions(wunderground_conditions_response)
+    cond = WundergroundConditions('NZCH', wunderground_conditions_response)
     assert_equal(cond.observation_time.isoformat(), '2016-12-23T00:30:00')
 
 
 def test_wunderground_conditions_temperature():
-    cond = wunderground.WundergroundConditions(wunderground_conditions_response)
+    cond = WundergroundConditions('NZCH', wunderground_conditions_response)
     assert_equal(cond.temperature, 12)
 
 
 def test_wunderground_conditions_humidity():
-    cond = wunderground.WundergroundConditions(wunderground_conditions_response)
+    cond = WundergroundConditions('NZCH', wunderground_conditions_response)
     assert_equal(cond.relative_humidity, 88)
 
 
 def test_wunderground_conditions_dewpoint():
-    cond = wunderground.WundergroundConditions(wunderground_conditions_response)
+    cond = WundergroundConditions('NZCH', wunderground_conditions_response)
     assert_equal(cond.dewpoint, 10)
 
 
 def test_wunderground_conditions_pressure():
-    cond = wunderground.WundergroundConditions(wunderground_conditions_response)
+    cond = WundergroundConditions('NZCH', wunderground_conditions_response)
     assert_equal(cond.pressure, 1006)
 
